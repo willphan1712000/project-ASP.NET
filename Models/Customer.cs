@@ -1,7 +1,12 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace ASP.NET_Web.Models;
 
 public class Customer(string name)
 {
+    public int Id {get; set;}
+    [Required]
+    [StringLength(255)]
     public string Name { get; set;} = name;
 }
 
