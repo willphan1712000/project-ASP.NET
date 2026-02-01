@@ -8,8 +8,8 @@ public class HomeController : Controller
 {
     public IActionResult Index()
     {
-        var movies = new Movies("Will Phan 1712000");
-        return View(movies);
+        var movie = new Movie("Will Phan 1712000");
+        return View(movie);
     }
 
     public IActionResult Privacy()

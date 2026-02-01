@@ -1,0 +1,9 @@
+@model ASP.NET_Web.Models.Customers
+
+<div>
+    @foreach(var customer in Model.GetCustomers()) {
+        <div>
+            @customer.Name
+        </div>
+    }
+</div>

@@ -8,7 +8,8 @@ public class MoviesController : Controller
 {
     public IActionResult Index()
     {
-        return View();
+        var movies = new Movies();
+        return View(movies);
     }
 
     [Route("movies/releaseDate/{year}/{month:regex(\\d{{1}}|d{{2}}):range(1,12)}")]
