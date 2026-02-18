@@ -35,4 +35,9 @@ public partial class AspNetWebContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+    public DbSet<Customer> Customer {get; set;}
+    public DbSet<Order> Order {get; set;}
+    public DbSet<Profile> Profile {get; set;}
+    public DbSet<Product> Product {get; set;}
 }

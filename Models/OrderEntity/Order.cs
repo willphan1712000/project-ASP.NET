@@ -17,7 +17,7 @@ public class Order
 
     public float Price {get; set;}
 
-    public DateTime CreatedAt {set; get;}
+    public DateTime CreatedAt {set; get;} = DateTime.Now;
 
     public OrderStatus Status {set; get;}
 }

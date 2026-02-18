@@ -23,6 +23,6 @@ public class ProductConfig : IEntityTypeConfiguration<Product>
 
         builder
             .Property(p => p.createdAt)
-            .HasDefaultValueSql("NOW()");
+            .HasDefaultValueSql("CURRENT_TIMESTAMP()");
     }
 }

@@ -23,10 +23,11 @@ public class OrderConfig : IEntityTypeConfiguration<Order>
 
         builder
             .Property(o => o.Status)
-            .IsRequired();
+            .IsRequired()
+            .HasConversion<string>();
             
         builder
             .Property(o => o.CreatedAt)
-                .HasDefaultValueSql("NOW()");
+                .HasDefaultValueSql("CURRENT_TIMESTAMP()");
     }
 }

@@ -1,3 +1,5 @@
+using ASP.NET_Web.Models;
+using ASP.NET_Web.Models.CustomerEntity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.NET_Web.Controllers;
@@ -6,7 +8,7 @@ public class CustomerController : Controller
 {
     public IActionResult Index()
     {
-        var customers = new Models.CustomerEntity.Customers();
-        return View(customers);
+        (new CustomerRepo()).GetCustomersExtension();
+        return View(new Customers());
     }
 }
