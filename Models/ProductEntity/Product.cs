@@ -1,4 +1,6 @@
-namespace ASP.NET_Web.Models.EntityConfiguration;
+using ASP.NET_Web.Models.CustomerEntity;
+
+namespace ASP.NET_Web.Models.ProductEntity;
 
 public class Product(String name)
 {

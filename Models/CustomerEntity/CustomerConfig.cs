@@ -1,7 +1,8 @@
+using ASP.NET_Web.Models.ProductEntity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace ASP.NET_Web.Models.EntityConfiguration;
+namespace ASP.NET_Web.Models.CustomerEntity;
 
 public class CustomerConfig : IEntityTypeConfiguration<Customer>
 {

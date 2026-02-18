@@ -1,4 +1,7 @@
-namespace ASP.NET_Web.Models.EntityConfiguration;
+using ASP.NET_Web.Models.OrderEntity;
+using ASP.NET_Web.Models.ProductEntity;
+
+namespace ASP.NET_Web.Models.CustomerEntity;
 
 public class Customer(string name)
 {

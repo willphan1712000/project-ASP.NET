@@ -1,4 +1,6 @@
-﻿using ASP.NET_Web.Models.EntityConfiguration;
+﻿using ASP.NET_Web.Models.CustomerEntity;
+using ASP.NET_Web.Models.OrderEntity;
+using ASP.NET_Web.Models.ProductEntity;
 using Microsoft.EntityFrameworkCore;
 
 namespace ASP.NET_Web.Models;
@@ -31,6 +33,4 @@ public partial class AspNetWebContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
-    public DbSet<Customer> Customer { get; set; }
 }
