@@ -1,4 +1,5 @@
 using ASP.NET_Web.Models.ProductEntity;
+using ASP.NET_Web.Models.ProfileEntity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -40,5 +41,10 @@ public class CustomerConfig : IEntityTypeConfiguration<Customer>
                     j.HasKey("customer_id", "product_id");
                 }
             );
+
+        builder
+            .HasOne(c => c.Profile)
+            .WithOne(p => p.Customer)
+            .HasForeignKey<Profile>(p => p.Customer_id);
     }
 }

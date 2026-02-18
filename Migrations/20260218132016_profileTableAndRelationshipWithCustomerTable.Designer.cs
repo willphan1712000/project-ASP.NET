@@ -4,6 +4,7 @@ using ASP.NET_Web.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ASP.NET_Web.Migrations
 {
     [DbContext(typeof(AspNetWebContext))]
-    partial class AspNetWebContextModelSnapshot : ModelSnapshot
+    [Migration("20260218132016_profileTableAndRelationshipWithCustomerTable")]
+    partial class profileTableAndRelationshipWithCustomerTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -123,7 +126,7 @@ namespace ASP.NET_Web.Migrations
                     b.HasIndex("Customer_id")
                         .IsUnique();
 
-                    b.ToTable("profile", (string)null);
+                    b.ToTable("Profile");
                 });
 
             modelBuilder.Entity("WishList", b =>

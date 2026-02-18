@@ -1,6 +1,7 @@
 ﻿using ASP.NET_Web.Models.CustomerEntity;
 using ASP.NET_Web.Models.OrderEntity;
 using ASP.NET_Web.Models.ProductEntity;
+using ASP.NET_Web.Models.ProfileEntity;
 using Microsoft.EntityFrameworkCore;
 
 namespace ASP.NET_Web.Models;
@@ -28,6 +29,7 @@ public partial class AspNetWebContext : DbContext
         modelBuilder.ApplyConfiguration(new CustomerConfig());
         modelBuilder.ApplyConfiguration(new OrderConfig());
         modelBuilder.ApplyConfiguration(new ProductConfig());
+        modelBuilder.ApplyConfiguration(new ProfileConfig());
 
         OnModelCreatingPartial(modelBuilder);
     }
