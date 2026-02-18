@@ -8,6 +8,6 @@ public class Profile (string address, string phone, string facebook)
     public string Address {get; set;} = address;
     public string Phone {get; set;} = phone;
     public string Facebook {get; set;} = facebook;
-    public int Customer_id {get;set;}
+    public int? Customer_id {get;set;}
     public Customer? Customer {get; set;}
 }
