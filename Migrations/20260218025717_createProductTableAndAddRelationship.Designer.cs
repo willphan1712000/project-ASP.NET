@@ -4,6 +4,7 @@ using ASP.NET_Web.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ASP.NET_Web.Migrations
 {
     [DbContext(typeof(AspNetWebContext))]
-    partial class AspNetWebContextModelSnapshot : ModelSnapshot
+    [Migration("20260218025717_createProductTableAndAddRelationship")]
+    partial class createProductTableAndAddRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -95,19 +98,24 @@ namespace ASP.NET_Web.Migrations
                     b.ToTable("products", (string)null);
                 });
 
-            modelBuilder.Entity("WishList", b =>
+            modelBuilder.Entity("ASP.NET_Web.Models.EntityConfiguration.WishList", b =>
                 {
-                    b.Property<int>("customer_id")
+                    b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("product_id")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.HasKey("customer_id", "product_id");
+                    b.Property<int>("CustomerId1")
+                        .HasColumnType("int");
 
-                    b.HasIndex("product_id");
+                    b.HasKey("CustomerId", "ProductId");
 
-                    b.ToTable("wishlist", (string)null);
+                    b.HasIndex("CustomerId1");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("WishList");
                 });
 
             modelBuilder.Entity("ASP.NET_Web.Models.EntityConfiguration.Order", b =>
@@ -121,19 +129,27 @@ namespace ASP.NET_Web.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("WishList", b =>
+            modelBuilder.Entity("ASP.NET_Web.Models.EntityConfiguration.WishList", b =>
                 {
                     b.HasOne("ASP.NET_Web.Models.EntityConfiguration.Customer", null)
                         .WithMany()
-                        .HasForeignKey("customer_id")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ASP.NET_Web.Models.EntityConfiguration.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ASP.NET_Web.Models.EntityConfiguration.Product", null)
                         .WithMany()
-                        .HasForeignKey("product_id")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("ASP.NET_Web.Models.EntityConfiguration.Customer", b =>

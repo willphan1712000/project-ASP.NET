@@ -1,4 +1,4 @@
-using ASP.NET_Web.Models;
+using ASP.NET_Web.Models.EntityConfiguration;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.NET_Web.Controllers;

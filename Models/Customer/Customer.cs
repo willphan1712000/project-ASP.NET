@@ -1,13 +1,14 @@
-using System.ComponentModel.DataAnnotations;
-
-namespace ASP.NET_Web.Models;
+namespace ASP.NET_Web.Models.EntityConfiguration;
 
 public class Customer(string name)
 {
     public int Id {get; set;}
-    [Required]
-    [StringLength(255)]
+
     public string Name { get; set;} = name;
+
+    public List<Order> Orders {get; set;} = [];
+
+    public List<Product> Products {get; set;} = [];
 }
 
 public class Customers

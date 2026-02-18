@@ -1984,11 +1984,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/willphan1712000/Will/Development/SWE/WebDev/ASP.NET_Web/ASP.NET_Web.csproj",
+      "projectUniqueName": "/Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/ASP.NET_Web.csproj",
       "projectName": "ASP.NET_Web",
-      "projectPath": "/Users/willphan1712000/Will/Development/SWE/WebDev/ASP.NET_Web/ASP.NET_Web.csproj",
+      "projectPath": "/Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/ASP.NET_Web.csproj",
       "packagesPath": "/Users/willphan1712000/.nuget/packages/",
-      "outputPath": "/Users/willphan1712000/Will/Development/SWE/WebDev/ASP.NET_Web/obj/",
+      "outputPath": "/Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/willphan1712000/.nuget/NuGet/NuGet.Config"

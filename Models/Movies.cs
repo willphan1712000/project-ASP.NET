@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-
 namespace ASP.NET_Web.Models;
 
 public class Movie(string name)

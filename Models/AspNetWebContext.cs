@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ASP.NET_Web.Models.EntityConfiguration;
 using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
 
 namespace ASP.NET_Web.Models;
 
@@ -24,6 +22,10 @@ public partial class AspNetWebContext : DbContext
         modelBuilder
             .UseCollation("utf8mb4_general_ci")
             .HasCharSet("utf8mb4");
+
+        modelBuilder.ApplyConfiguration(new CustomerConfig());
+        modelBuilder.ApplyConfiguration(new OrderConfig());
+        modelBuilder.ApplyConfiguration(new ProductConfig());
 
         OnModelCreatingPartial(modelBuilder);
     }

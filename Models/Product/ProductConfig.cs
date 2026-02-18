@@ -1,0 +1,28 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace ASP.NET_Web.Models.EntityConfiguration;
+
+public class ProductConfig : IEntityTypeConfiguration<Product>
+{
+    public void Configure(EntityTypeBuilder<Product> builder)
+    {
+        builder
+            .ToTable("products");
+
+        builder
+            .HasKey(p => p.Id);
+
+        builder
+            .Property(p => p.Id)
+            .ValueGeneratedOnAdd();
+
+        builder
+            .Property(p => p.Name)
+            .IsRequired();
+
+        builder
+            .Property(p => p.createdAt)
+            .HasDefaultValueSql("NOW()");
+    }
+}
