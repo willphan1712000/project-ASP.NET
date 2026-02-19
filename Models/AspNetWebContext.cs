@@ -15,6 +15,7 @@ public partial class AspNetWebContext : DbContext
     public AspNetWebContext(DbContextOptions<AspNetWebContext> options)
         : base(options)
     {
+        this.ChangeTracker.LazyLoadingEnabled = false; // disable lazy loading
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
