@@ -24,7 +24,10 @@ public class OrderConfig : IEntityTypeConfiguration<Order>
         builder
             .Property(o => o.Status)
             .IsRequired()
-            .HasConversion<string>();
+            .HasConversion(
+                v => v.ToString(),
+                v => Enum.Parse<OrderStatus>(v)
+            );
             
         builder
             .Property(o => o.CreatedAt)

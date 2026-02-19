@@ -8,7 +8,7 @@ public class CustomerController : Controller
 {
     public IActionResult Index()
     {
-        (new CustomerRepo()).GetCustomersExtension();
+        (new CustomerRepo()).EagerLoading();
         return View(new Customers());
     }
 }

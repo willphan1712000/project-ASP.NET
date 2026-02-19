@@ -1,4 +1,6 @@
 using System.Text.RegularExpressions;
+using ASP.NET_Web.Models.OrderEntity;
+using Microsoft.EntityFrameworkCore;
 
 namespace ASP.NET_Web.Models.CustomerEntity;
 
@@ -100,5 +102,28 @@ public class CustomerRepo
         var any = context.Customer.Any(c => c.Email == "will@gmail.com");
         System.Console.WriteLine(all);
         System.Console.WriteLine(any);
+    }
+
+    public void EagerLoading()
+    {
+        // Eager Loading
+        var customers = context.Customer.Include(c => c.Orders).ToList();
+        foreach(var customer in customers)
+        {
+            System.Console.WriteLine("Customer: " + customer.Name);
+            foreach(var order in customer.Orders)
+            {
+                System.Console.WriteLine("\t" + order.Status);
+            }
+        }
+
+        // Explicit Loading
+        var users = context.Customer.ToList();
+        var userIds = users.Select(u => u.Id);
+        var orders = context.Order.Where(o => userIds.Contains(o.Customer_id) && o.Price > 35);
+        foreach(var order in orders)
+        {
+            System.Console.WriteLine(order.Id);
+        }
     }
 }
