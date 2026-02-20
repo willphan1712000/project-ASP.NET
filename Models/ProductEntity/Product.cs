@@ -2,13 +2,15 @@ using ASP.NET_Web.Models.CustomerEntity;
 
 namespace ASP.NET_Web.Models.ProductEntity;
 
-public class Product(String name)
+public class Product
 {
     public int Id {get; set;}
 
-    public string Name {get; set;} = name;
+    required public string Name {get; set;}
 
-    public float Price {get; set;}
+    required public float Price {get; set;}
+
+    required public int Stock {get; set;}
 
     public List<Customer> Customers {get; set;} = [];
 

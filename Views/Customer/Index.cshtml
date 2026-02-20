@@ -5,8 +5,8 @@
         Customers
     </h1>
 
-    <div class="vstack gap-2">
-        <a href="/Customer/New">Create a customer</a>
+    <div class="vstack gap-2 w-25">
+        <a href="/Customer/New" class="btn btn-primary">Create customer</a>
         @foreach(var customer in Model) {
             @Html.ActionLink(customer.Name, "Edit", "Customer", new { Id = customer.Id })
         }

@@ -1,0 +1,25 @@
+@using ASP.NET_Web.Models.ProductEntity
+@model Product
+
+<h1>
+    @(Model == null ? "Create" : "Edit") Movie
+</h1>
+
+@using(@Html.BeginForm("Save", "Product")) {
+    <div class="vstack gap-3 w-50">
+        <div class="group-form">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        </div>
+        <div class="group-form"> 
+            @Html.LabelFor(m => m.Price)
+            @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+        </div>
+        <div class="group-form"> 
+            @Html.LabelFor(m => m.Stock)
+            @Html.TextBoxFor(m => m.Stock, new { @class = "form-control" })
+        </div>
+        @Html.HiddenFor(c => c.Id)
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+}

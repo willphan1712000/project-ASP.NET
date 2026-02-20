@@ -22,6 +22,37 @@ public class ProductController : Controller
         var products = _context.Product.ToList();
         return View(products);
     }
+    public IActionResult New()
+    {
+        return View(null);
+    }
+
+    public IActionResult Save(Product product)
+    {
+        if(product.Id == 0)
+        {
+            _context.Add(product);    
+        } else
+        {
+            var productInDb = _context.Product.Single(p => p.Id == product.Id);
+            productInDb.Name = product.Name;
+            productInDb.Price = product.Price;
+            productInDb.Stock = product.Stock;
+        }
+        _context.SaveChanges();
+        return RedirectToAction("Index", "Product");
+    }
+
+    public IActionResult Edit(int id)
+    {
+        var product = _context.Product.SingleOrDefault(p => p.Id == id);
+        if(product == null)
+        {
+            return NotFound();
+        }
+
+        return View("New", product);
+    }
 
     [Route("movies/releaseDate/{year}/{month:regex(\\d{{1}}|d{{2}}):range(1,12)}")]
     public IActionResult Release(int? year, int? month)

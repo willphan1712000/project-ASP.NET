@@ -2,7 +2,7 @@
 @model NewCustomerViewModel
 
 <h1>
-    Create Customer
+    @(Model.Customer == null ? "Create" : "Edit") Customer
 </h1>
 
 @using(@Html.BeginForm("Save", "Customer")) {
@@ -15,10 +15,12 @@
             @Html.LabelFor(m => m.Customer!.Email)
             @Html.TextBoxFor(m => m.Customer!.Email, new { @class = "form-control" })
         </div>
-        <div class="group-form"> 
-            @Html.LabelFor(m => m.Customer!.Password)
-            @Html.PasswordFor(m => m.Customer!.Password, new { @class = "form-control" })
-        </div>
+        @if(Model.Customer == null) {
+            <div class="group-form"> 
+                @Html.LabelFor(m => m.Customer!.Password)
+                @Html.PasswordFor(m => m.Customer!.Password, new { @class = "form-control" })
+            </div>
+        }
         <div class="group-form"> 
             @Html.LabelFor(m => m.Customer!.MembershipTypeId)
             @Html.DropDownListFor(m => m.Customer!.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })

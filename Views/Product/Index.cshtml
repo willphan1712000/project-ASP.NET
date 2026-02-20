@@ -1,7 +1,12 @@
 @model List<ASP.NET_Web.Models.ProductEntity.Product>;
 
-<div>
+<h1>
+    Movies
+</h1>
+
+<div class="vstack gap-3 w-25">
+    <a href="/Product/New" class="btn btn-primary">Create Movie</a>
     @foreach(var movie in Model) {
-        <div>@movie.Name</div>
+        @Html.ActionLink(movie.Name, "Edit", "Product", new {Id = movie.Id})
     }
 </div>

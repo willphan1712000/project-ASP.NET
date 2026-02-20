@@ -46,9 +46,8 @@ public class CustomerController : Controller
         else
         {
             var customerInDb = _context.Customer.Single(c => c.Id == customer.Id);
-            customerInDb.Name = customer.Name ?? customerInDb.Name;
-            customerInDb.Email = customer.Email ?? customerInDb.Email;
-            customerInDb.Password = customer.Password ?? customerInDb.Password;
+            customerInDb.Name = customer.Name;
+            customerInDb.Email = customer.Email;
             customerInDb.MembershipTypeId = customer.MembershipTypeId;
         }
 
