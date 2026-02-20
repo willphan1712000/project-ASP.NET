@@ -1,9 +1,7 @@
 using ASP.NET_Web.Models;
 using ASP.NET_Web.Models.CustomerEntity;
-using ASP.NET_Web.Models.OrderEntity;
 using ASP.NET_Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace ASP.NET_Web.Controllers;
 
@@ -39,6 +37,16 @@ public class CustomerController : Controller
     [HttpPost]
     public IActionResult Save(Customer customer)
     {
+        if(!ModelState.IsValid)
+        {
+            var modelView = new NewCustomerViewModel
+            {
+                Customer = customer,
+                MembershipTypes = _context.MembershipType.ToList()
+            };
+
+            return View("New", modelView);
+        }
         if(customer.Id == 0)
         {
             _context.Customer.Add(customer);

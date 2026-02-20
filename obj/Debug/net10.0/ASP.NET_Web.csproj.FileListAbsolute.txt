@@ -299,7 +299,6 @@
 /Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/obj/Debug/net10.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
 /Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/obj/Debug/net10.0/scopedcss/bundle/ASP.NET_Web.styles.css
 /Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/obj/Debug/net10.0/scopedcss/projectbundle/ASP.NET_Web.bundle.scp.css
-/Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/obj/Debug/net10.0/compressed/qs60njpqjz-{0}-lugek5hnai-lugek5hnai.gz
 /Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/obj/Debug/net10.0/compressed/7lbatugvok-{0}-61n19gt1b8-61n19gt1b8.gz
 /Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/obj/Debug/net10.0/compressed/hc0c77r5i2-{0}-bqjiyaj88i-bqjiyaj88i.gz
 /Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/obj/Debug/net10.0/compressed/u2m6dnwnt6-{0}-c2jlpeoesf-c2jlpeoesf.gz
@@ -373,4 +372,5 @@
 /Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/obj/Debug/net10.0/ASP.NET_Web.pdb
 /Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/obj/Debug/net10.0/ASP.NET_Web.genruntimeconfig.cache
 /Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/obj/Debug/net10.0/ref/ASP.NET_Web.dll
-/Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/obj/Debug/net10.0/compressed/pxaqcjhftu-{0}-qxt2m2kxqe-qxt2m2kxqe.gz
+/Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/obj/Debug/net10.0/compressed/qs60njpqjz-{0}-lcppi9qhs5-lcppi9qhs5.gz
+/Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/obj/Debug/net10.0/compressed/pxaqcjhftu-{0}-47hxeiifp3-47hxeiifp3.gz

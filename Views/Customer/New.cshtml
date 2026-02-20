@@ -2,20 +2,22 @@
 @model NewCustomerViewModel
 
 <h1>
-    @(Model.Customer == null ? "Create" : "Edit") Customer
+    @(Model.Customer == null || Model.Customer.Id == 0 ? "Create" : "Edit") Customer
 </h1>
 
 @using(@Html.BeginForm("Save", "Customer")) {
-    <div class="vstack gap-3 w-50">
+    <div class="vstack gap-3" style="width: 300px;">
         <div class="group-form">
             @Html.LabelFor(m => m.Customer!.Name)
             @Html.TextBoxFor(m => m.Customer!.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Customer!.Name)
         </div>
         <div class="group-form"> 
             @Html.LabelFor(m => m.Customer!.Email)
             @Html.TextBoxFor(m => m.Customer!.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Customer!.Email)
         </div>
-        @if(Model.Customer == null) {
+        @if(Model.Customer == null || Model.Customer.Id == 0) {
             <div class="group-form"> 
                 @Html.LabelFor(m => m.Customer!.Password)
                 @Html.PasswordFor(m => m.Customer!.Password, new { @class = "form-control" })
@@ -24,6 +26,7 @@
         <div class="group-form"> 
             @Html.LabelFor(m => m.Customer!.MembershipTypeId)
             @Html.DropDownListFor(m => m.Customer!.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Customer!.MembershipTypeId)
         </div>
         @Html.HiddenFor(c => c.Customer!.Id)
         <button type="submit" class="btn btn-primary">Submit</button>
