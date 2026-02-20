@@ -1,12 +1,10 @@
-using System.Text.RegularExpressions;
-using ASP.NET_Web.Models.OrderEntity;
 using Microsoft.EntityFrameworkCore;
 
 namespace ASP.NET_Web.Models.CustomerEntity;
 
 public class CustomerRepo
 {
-    private AspNetWebContext context;
+    private readonly AspNetWebContext context;
     public CustomerRepo() {
         context = new AspNetWebContext();
     }
