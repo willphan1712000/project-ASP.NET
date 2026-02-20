@@ -1,20 +1,28 @@
-@model ASP.NET_Web.Models.CustomerEntity.Customer;
+@using ASP.NET_Web.ViewModels
+@model NewCustomerViewModel
 
 <h1>
     Create Customer
 </h1>
 
 @using(@Html.BeginForm("Create", "Customer")) {
-    <div class="group-form"> 
-        @Html.LabelFor(m => m.Name)
-        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-    </div>
-    <div class="group-form"> 
-        @Html.LabelFor(m => m.Email)
-        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-    </div>
-    <div class="group-form"> 
-        @Html.LabelFor(m => m.Password)
-        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+    <div class="vstack gap-3 w-50">
+        <div class="group-form">
+            @Html.LabelFor(m => m.Customer!.Name)
+            @Html.TextBoxFor(m => m.Customer!.Name, new { @class = "form-control" })
+        </div>
+        <div class="group-form"> 
+            @Html.LabelFor(m => m.Customer!.Email)
+            @Html.TextBoxFor(m => m.Customer!.Email, new { @class = "form-control" })
+        </div>
+        <div class="group-form"> 
+            @Html.LabelFor(m => m.Customer!.Password)
+            @Html.PasswordFor(m => m.Customer!.Password, new { @class = "form-control" })
+        </div>
+        <div class="group-form"> 
+            @Html.LabelFor(m => m.Customer!.MembershipTypeId)
+            @Html.DropDownListFor(m => m.Customer!.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 }

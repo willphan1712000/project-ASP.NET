@@ -1,6 +1,7 @@
 using ASP.NET_Web.Models;
 using ASP.NET_Web.Models.CustomerEntity;
 using ASP.NET_Web.Models.OrderEntity;
+using ASP.NET_Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,8 +30,18 @@ public class CustomerController : Controller
         var orders = _context.Order.Where(o => o.Customer_id == Id).ToList();
         return View(orders);
     }
-
     public IActionResult New() {
-        return View();
+        var MembershipTypes = _context.MembershipType.ToList();
+        var CustomerModelView = new NewCustomerViewModel {MembershipTypes = MembershipTypes};
+        return View(CustomerModelView);
+    }
+
+    [HttpPost]
+    public IActionResult Create(Customer customer)
+    {
+        _context.Customer.Add(customer);
+        _context.SaveChanges();
+
+        return RedirectToAction("Index", "Customer");
     }
 }

@@ -16,6 +16,7 @@ public class Customer
     public List<Product> Products {get; set;} = [];
     public Profile? Profile {get; set;}
 
+    [Display(Name = "Membership Type")]
     public int MembershipTypeId {get; set;}
     public MembershipType? MembershipType {get; set;}
 }
