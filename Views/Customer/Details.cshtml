@@ -1,0 +1,12 @@
+@model List<ASP.NET_Web.Models.OrderEntity.Order>
+
+<h1>
+    Orders
+</h1>
+
+@foreach(var order in Model) {
+    <div>
+        <p>@order.Id</p>
+        <p>@order.Status</p>
+    </div>
+}

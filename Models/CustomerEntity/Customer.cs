@@ -14,16 +14,3 @@ public class Customer
     public List<Product> Products {get; set;} = [];
     public Profile? Profile {get; set;}
 }
-
-public class Customers
-{
-    public List<Customer> GetCustomers()
-    {
-        return [
-            new Customer { Name = "Will", Email = "will@gmail.com", Password = "123"},
-            new Customer { Name = "Will", Email = "will@gmail.com", Password = "123"},
-            new Customer { Name = "Will", Email = "will@gmail.com", Password = "123"},
-            new Customer { Name = "Will", Email = "will@gmail.com", Password = "123"},
-        ];
-    }
-}

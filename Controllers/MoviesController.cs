@@ -1,15 +1,26 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ASP.NET_Web.Models;
+using ASP.NET_Web.Models.ProductEntity;
 
 namespace ASP.NET_Web.Controllers;
 
-public class MoviesController : Controller
+public class ProductController : Controller
 {
+    private AspNetWebContext _context;
+    public ProductController()
+    {
+        _context = new AspNetWebContext();
+    }
+    protected override void Dispose(bool disposing)
+    {
+        _context.Dispose();
+        base.Dispose(disposing);
+    }
     public IActionResult Index()
     {
-        var movies = new Movies();
-        return View(movies);
+        var products = _context.Product.ToList();
+        return View(products);
     }
 
     [Route("movies/releaseDate/{year}/{month:regex(\\d{{1}}|d{{2}}):range(1,12)}")]
