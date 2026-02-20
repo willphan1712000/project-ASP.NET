@@ -4,6 +4,7 @@ using ASP.NET_Web.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ASP.NET_Web.Migrations
 {
     [DbContext(typeof(AspNetWebContext))]
-    partial class AspNetWebContextModelSnapshot : ModelSnapshot
+    [Migration("20260220161628_addMembershipTypeTable")]
+    partial class addMembershipTypeTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,9 +39,6 @@ namespace ASP.NET_Web.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("MembershipTypeId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -48,8 +48,6 @@ namespace ASP.NET_Web.Migrations
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MembershipTypeId");
 
                     b.ToTable("customers", (string)null);
                 });
@@ -169,17 +167,6 @@ namespace ASP.NET_Web.Migrations
                     b.ToTable("wishlist", (string)null);
                 });
 
-            modelBuilder.Entity("ASP.NET_Web.Models.CustomerEntity.Customer", b =>
-                {
-                    b.HasOne("ASP.NET_Web.Models.MembershipTypeEntity.MembershipType", "MembershipType")
-                        .WithMany("Customers")
-                        .HasForeignKey("MembershipTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("MembershipType");
-                });
-
             modelBuilder.Entity("ASP.NET_Web.Models.OrderEntity.Order", b =>
                 {
                     b.HasOne("ASP.NET_Web.Models.CustomerEntity.Customer", "Customer")
@@ -220,11 +207,6 @@ namespace ASP.NET_Web.Migrations
                     b.Navigation("Orders");
 
                     b.Navigation("Profile");
-                });
-
-            modelBuilder.Entity("ASP.NET_Web.Models.MembershipTypeEntity.MembershipType", b =>
-                {
-                    b.Navigation("Customers");
                 });
 #pragma warning restore 612, 618
         }

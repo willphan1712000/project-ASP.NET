@@ -1,0 +1,20 @@
+@model ASP.NET_Web.Models.CustomerEntity.Customer;
+
+<h1>
+    Create Customer
+</h1>
+
+@using(@Html.BeginForm("Create", "Customer")) {
+    <div class="group-form"> 
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    </div>
+    <div class="group-form"> 
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+    </div>
+    <div class="group-form"> 
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+    </div>
+}

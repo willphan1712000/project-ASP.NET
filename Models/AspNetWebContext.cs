@@ -1,4 +1,5 @@
 ﻿using ASP.NET_Web.Models.CustomerEntity;
+using ASP.NET_Web.Models.MembershipTypeEntity;
 using ASP.NET_Web.Models.OrderEntity;
 using ASP.NET_Web.Models.ProductEntity;
 using ASP.NET_Web.Models.ProfileEntity;
@@ -31,6 +32,7 @@ public partial class AspNetWebContext : DbContext
         modelBuilder.ApplyConfiguration(new OrderConfig());
         modelBuilder.ApplyConfiguration(new ProductConfig());
         modelBuilder.ApplyConfiguration(new ProfileConfig());
+        modelBuilder.ApplyConfiguration(new MembershipTypeConfig());
 
         OnModelCreatingPartial(modelBuilder);
     }
@@ -41,4 +43,5 @@ public partial class AspNetWebContext : DbContext
     public DbSet<Order> Order {get; set;}
     public DbSet<Profile> Profile {get; set;}
     public DbSet<Product> Product {get; set;}
+    public DbSet<MembershipType> MembershipType {get; set;}
 }

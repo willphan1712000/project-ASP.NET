@@ -29,4 +29,8 @@ public class CustomerController : Controller
         var orders = _context.Order.Where(o => o.Customer_id == Id).ToList();
         return View(orders);
     }
+
+    public IActionResult New() {
+        return View();
+    }
 }

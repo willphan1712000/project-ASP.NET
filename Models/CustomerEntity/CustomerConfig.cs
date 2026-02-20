@@ -46,5 +46,10 @@ public class CustomerConfig : IEntityTypeConfiguration<Customer>
             .HasOne(c => c.Profile)
             .WithOne(p => p.Customer)
             .HasForeignKey<Profile>(p => p.Customer_id);
+
+        builder
+            .HasOne(c => c.MembershipType)
+            .WithMany(m => m.Customers)
+            .HasForeignKey(c => c.MembershipTypeId);
     }
 }
