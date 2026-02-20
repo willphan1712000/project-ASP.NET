@@ -5,7 +5,7 @@
     Create Customer
 </h1>
 
-@using(@Html.BeginForm("Create", "Customer")) {
+@using(@Html.BeginForm("Save", "Customer")) {
     <div class="vstack gap-3 w-50">
         <div class="group-form">
             @Html.LabelFor(m => m.Customer!.Name)
@@ -23,6 +23,7 @@
             @Html.LabelFor(m => m.Customer!.MembershipTypeId)
             @Html.DropDownListFor(m => m.Customer!.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
         </div>
+        @Html.HiddenFor(c => c.Customer!.Id)
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 }

@@ -37,11 +37,40 @@ public class CustomerController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create(Customer customer)
+    public IActionResult Save(Customer customer)
     {
-        _context.Customer.Add(customer);
+        if(customer.Id == 0)
+        {
+            _context.Customer.Add(customer);
+        }
+        else
+        {
+            var customerInDb = _context.Customer.Single(c => c.Id == customer.Id);
+            customerInDb.Name = customer.Name ?? customerInDb.Name;
+            customerInDb.Email = customer.Email ?? customerInDb.Email;
+            customerInDb.Password = customer.Password ?? customerInDb.Password;
+            customerInDb.MembershipTypeId = customer.MembershipTypeId;
+        }
+
         _context.SaveChanges();
 
         return RedirectToAction("Index", "Customer");
+    }
+
+    public IActionResult Edit(int id)
+    {
+        var customer = _context.Customer.SingleOrDefault(c => c.Id == id);
+        if(customer == null)
+        {
+            return NotFound();
+        }
+
+        var modelView = new NewCustomerViewModel
+        {
+            Customer = customer,
+            MembershipTypes = _context.MembershipType.ToList()
+        };
+
+        return View("New", modelView);
     }
 }
