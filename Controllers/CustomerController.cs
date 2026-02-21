@@ -35,6 +35,7 @@ public class CustomerController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public IActionResult SaveNew(CreateCustomerDTO createCustomerDTO)
     {
         if(!ModelState.IsValid)
@@ -71,6 +72,8 @@ public class CustomerController : Controller
         return View(modelView);
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
     public IActionResult SaveEdit(EditCustomerDTO editCustomerDTO)
     {
         if(!ModelState.IsValid)

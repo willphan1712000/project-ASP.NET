@@ -1,11 +1,11 @@
 @using ASP.NET_Web.Models.ProductEntity.dto
-@model ProductDTO
+@model EditProductDTO
 
 <h1>
-    Create Movie
+    Edit Movie
 </h1>
 
-@using(@Html.BeginForm("SaveNew", "Product")) {
+@using(@Html.BeginForm("SaveEdit", "Product")) {
     <div class="vstack gap-3" style="width: 300px;">
         <div class="group-form">
             @Html.LabelFor(m => m.Name)
@@ -22,6 +22,7 @@
             @Html.TextBoxFor(m => m.Stock, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Stock)
         </div>
+        @Html.HiddenFor(m => m.Id)
         @Html.AntiForgeryToken()
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>

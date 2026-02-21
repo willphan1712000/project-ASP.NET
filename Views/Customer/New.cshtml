@@ -32,6 +32,7 @@
             @Html.DropDownListFor(m => m.CreateCustomerDTO!.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.CreateCustomerDTO!.MembershipTypeId)
         </div>
+        @Html.AntiForgeryToken()
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 }

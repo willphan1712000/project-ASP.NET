@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ASP.NET_Web.Models;
 using ASP.NET_Web.Models.ProductEntity;
+using ASP.NET_Web.Models.ProductEntity.dto;
 
 namespace ASP.NET_Web.Controllers;
 
@@ -27,18 +28,16 @@ public class ProductController : Controller
         return View(null);
     }
 
-    public IActionResult Save(Product product)
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult SaveNew(ProductDTO productDTO)
     {
-        if(product.Id == 0)
+        if(!ModelState.IsValid)
         {
-            _context.Add(product);    
-        } else
-        {
-            var productInDb = _context.Product.Single(p => p.Id == product.Id);
-            productInDb.Name = product.Name;
-            productInDb.Price = product.Price;
-            productInDb.Stock = product.Stock;
+            return View("New", productDTO);
         }
+        
+        _context.Add(ProductDTO.ToEntity(productDTO));
         _context.SaveChanges();
         return RedirectToAction("Index", "Product");
     }
@@ -51,13 +50,26 @@ public class ProductController : Controller
             return NotFound();
         }
 
-        return View("New", product);
+        return View(EditProductDTO.ToDTO(product));
     }
 
-    [Route("movies/releaseDate/{year}/{month:regex(\\d{{1}}|d{{2}}):range(1,12)}")]
-    public IActionResult Release(int? year, int? month)
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult SaveEdit(EditProductDTO editProductDTO)
     {
-        return Content("year " + year + " month " + month);
+        if(!ModelState.IsValid)
+        {
+            return View("Edit", editProductDTO);    
+        }
+
+        var productInDB = _context.Product.Single(p => p.Id == editProductDTO.Id);
+        productInDB.Name = editProductDTO.Name;
+        productInDB.Price = editProductDTO.Price;
+        productInDB.Stock = editProductDTO.Stock;
+
+        _context.SaveChanges();
+
+        return RedirectToAction("Index", "Product");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
