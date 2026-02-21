@@ -2,33 +2,36 @@
 @model NewCustomerViewModel
 
 <h1>
-    @(Model.Customer == null || Model.Customer.Id == 0 ? "Create" : "Edit") Customer
+    Create Customer
 </h1>
 
-@using(@Html.BeginForm("Save", "Customer")) {
+@using(@Html.BeginForm("SaveNew", "Customer")) {
     <div class="vstack gap-3" style="width: 300px;">
         <div class="group-form">
-            @Html.LabelFor(m => m.Customer!.Name)
-            @Html.TextBoxFor(m => m.Customer!.Name, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Customer!.Name)
+            @Html.LabelFor(m => m.CreateCustomerDTO!.Name)
+            @Html.TextBoxFor(m => m.CreateCustomerDTO!.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CreateCustomerDTO!.Name)
         </div>
         <div class="group-form"> 
-            @Html.LabelFor(m => m.Customer!.Email)
-            @Html.TextBoxFor(m => m.Customer!.Email, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Customer!.Email)
+            @Html.LabelFor(m => m.CreateCustomerDTO!.Email)
+            @Html.TextBoxFor(m => m.CreateCustomerDTO!.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CreateCustomerDTO!.Email)
         </div>
-        @if(Model.Customer == null || Model.Customer.Id == 0) {
-            <div class="group-form"> 
-                @Html.LabelFor(m => m.Customer!.Password)
-                @Html.PasswordFor(m => m.Customer!.Password, new { @class = "form-control" })
-            </div>
-        }
         <div class="group-form"> 
-            @Html.LabelFor(m => m.Customer!.MembershipTypeId)
-            @Html.DropDownListFor(m => m.Customer!.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Customer!.MembershipTypeId)
+            @Html.LabelFor(m => m.CreateCustomerDTO!.Birthday)
+            @Html.TextBoxFor(m => m.CreateCustomerDTO!.Birthday, "{0:yyyy-MM-dd}", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CreateCustomerDTO!.Birthday)
         </div>
-        @Html.HiddenFor(c => c.Customer!.Id)
+        <div class="group-form"> 
+            @Html.LabelFor(m => m.CreateCustomerDTO!.Password)
+            @Html.PasswordFor(m => m.CreateCustomerDTO!.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CreateCustomerDTO!.Password)
+        </div>
+        <div class="group-form"> 
+            @Html.LabelFor(m => m.CreateCustomerDTO!.MembershipTypeId)
+            @Html.DropDownListFor(m => m.CreateCustomerDTO!.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CreateCustomerDTO!.MembershipTypeId)
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 }

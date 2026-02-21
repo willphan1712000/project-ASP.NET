@@ -1,0 +1,33 @@
+@using ASP.NET_Web.ViewModels
+@model EditCustomerViewModel
+
+<h1>
+    Edit Customer
+</h1>
+
+@using(@Html.BeginForm("SaveEdit", "Customer")) {
+    <div class="vstack gap-3" style="width: 300px;">
+        <div class="group-form">
+            @Html.LabelFor(m => m.EditCustomerDTO!.Name)
+            @Html.TextBoxFor(m => m.EditCustomerDTO!.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.EditCustomerDTO!.Name)
+        </div>
+        <div class="group-form"> 
+            @Html.LabelFor(m => m.EditCustomerDTO!.Email)
+            @Html.TextBoxFor(m => m.EditCustomerDTO!.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.EditCustomerDTO!.Email)
+        </div>
+        <div class="group-form"> 
+            @Html.LabelFor(m => m.EditCustomerDTO!.Birthday)
+            @Html.TextBoxFor(m => m.EditCustomerDTO!.Birthday, "{0:yyyy-MM-dd}", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.EditCustomerDTO!.Birthday)
+        </div>
+        <div class="group-form"> 
+            @Html.LabelFor(m => m.EditCustomerDTO!.MembershipTypeId)
+            @Html.DropDownListFor(m => m.EditCustomerDTO!.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.EditCustomerDTO!.MembershipTypeId)
+        </div>
+        @Html.HiddenFor(m => m.EditCustomerDTO!.Id)
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+}

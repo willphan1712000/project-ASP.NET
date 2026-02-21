@@ -35,30 +35,20 @@ public class CustomerController : Controller
     }
 
     [HttpPost]
-    public IActionResult Save(Customer customer)
+    public IActionResult SaveNew(CreateCustomerDTO createCustomerDTO)
     {
         if(!ModelState.IsValid)
         {
             var modelView = new NewCustomerViewModel
             {
-                Customer = customer,
+                CreateCustomerDTO = createCustomerDTO,
                 MembershipTypes = _context.MembershipType.ToList()
             };
 
             return View("New", modelView);
         }
-        if(customer.Id == 0)
-        {
-            _context.Customer.Add(customer);
-        }
-        else
-        {
-            var customerInDb = _context.Customer.Single(c => c.Id == customer.Id);
-            customerInDb.Name = customer.Name;
-            customerInDb.Email = customer.Email;
-            customerInDb.MembershipTypeId = customer.MembershipTypeId;
-        }
 
+        _context.Customer.Add(CreateCustomerDTO.ToEntity(createCustomerDTO));
         _context.SaveChanges();
 
         return RedirectToAction("Index", "Customer");
@@ -72,12 +62,36 @@ public class CustomerController : Controller
             return NotFound();
         }
 
-        var modelView = new NewCustomerViewModel
+        var modelView = new EditCustomerViewModel
         {
-            Customer = customer,
+            EditCustomerDTO = EditCustomerDTO.ToDTO(customer),
             MembershipTypes = _context.MembershipType.ToList()
         };
 
-        return View("New", modelView);
+        return View(modelView);
+    }
+
+    public IActionResult SaveEdit(EditCustomerDTO editCustomerDTO)
+    {
+        if(!ModelState.IsValid)
+        {
+            var editCustomerViewModel = new EditCustomerViewModel
+            {
+                EditCustomerDTO = editCustomerDTO,
+                MembershipTypes = _context.MembershipType.ToList()
+            };
+
+            return View("Edit", editCustomerViewModel);
+        }
+
+        var customerInDB = _context.Customer.Single(c => c.Id == editCustomerDTO.Id);
+        customerInDB.Name = editCustomerDTO.Name;
+        customerInDB.Email = editCustomerDTO.Email;
+        customerInDB.Birthday = editCustomerDTO.Birthday;
+        customerInDB.MembershipTypeId = editCustomerDTO.MembershipTypeId;
+
+        _context.SaveChanges();
+
+        return RedirectToAction("Index", "Customer");
     }
 }

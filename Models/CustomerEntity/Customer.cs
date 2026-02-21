@@ -15,7 +15,8 @@ public class Customer
     [StringLength(50, ErrorMessage = "{0} must be between {2} and {1} characters.", MinimumLength = 5)]
     required public string Name { get; set;}
     required public string Email { get; set;}
-    public string? Password { get; set;}
+    required public string Password { get; set;}
+    public DateOnly Birthday {set; get;}
     public List<Order> Orders {get; set;} = [];
     public List<Product> Products {get; set;} = [];
     public Profile? Profile {get; set;}

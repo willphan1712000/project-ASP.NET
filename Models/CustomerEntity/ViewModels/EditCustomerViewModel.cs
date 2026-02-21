@@ -3,8 +3,8 @@ using ASP.NET_Web.Models.MembershipTypeEntity;
 
 namespace ASP.NET_Web.ViewModels;
 
-public class NewCustomerViewModel
+public class EditCustomerViewModel
 {
-    public Customer? Customer {get; set;}
+    public EditCustomerDTO? EditCustomerDTO {get; set;}
     public IEnumerable<MembershipType>? MembershipTypes {get; set;}
 }
