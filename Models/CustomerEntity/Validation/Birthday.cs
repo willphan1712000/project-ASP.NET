@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using APS.NET_Web.Models.CustomerEntity.dto;
+using ASP.NET_Web.Models.MembershipTypeEntity;
 
 namespace ASP.NET_Web.Models.CustomerEntity.Validation;
 
@@ -9,7 +10,7 @@ public class BirthdayValidation : ValidationAttribute
     {
         var customer = (CustomerDTO) validationContext.ObjectInstance;
 
-        if(customer.MembershipTypeId == 0 || customer.MembershipTypeId == 1)
+        if(customer.MembershipTypeId == MembershipType.Unknown || customer.MembershipTypeId == MembershipType.PayAsyouGo)
             return ValidationResult.Success;
 
         if(customer.Birthday == DateOnly.MinValue)
