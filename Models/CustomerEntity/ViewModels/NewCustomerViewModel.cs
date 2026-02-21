@@ -1,7 +1,8 @@
-using ASP.NET_Web.Models.CustomerEntity;
+
+using ASP.NET_Web.Models.CustomerEntity.dto;
 using ASP.NET_Web.Models.MembershipTypeEntity;
 
-namespace ASP.NET_Web.ViewModels;
+namespace ASP.NET_Web.Models.CustomerEntity.ViewModels;
 
 public class NewCustomerViewModel
 {

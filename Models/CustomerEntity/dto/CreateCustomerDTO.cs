@@ -1,12 +1,12 @@
-namespace ASP.NET_Web.Models.CustomerEntity;
+using System.ComponentModel.DataAnnotations;
+using APS.NET_Web.Models.CustomerEntity.dto;
+using ASP.NET_Web.Models.CustomerEntity.Validation;
 
-public class CreateCustomerDTO
+namespace ASP.NET_Web.Models.CustomerEntity.dto;
+
+public class CreateCustomerDTO : CustomerDTO
 {
-    required public string Name {get; set;}
-    required public string Email {get; set;}
     required public string Password {get; set;}
-    public DateOnly Birthday {get; set;}
-    public int MembershipTypeId {get; set;}
 
     public static Customer ToEntity(CreateCustomerDTO createCustomerDTO)
     {

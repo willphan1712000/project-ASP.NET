@@ -1,6 +1,6 @@
 using ASP.NET_Web.Models;
-using ASP.NET_Web.Models.CustomerEntity;
-using ASP.NET_Web.ViewModels;
+using ASP.NET_Web.Models.CustomerEntity.dto;
+using ASP.NET_Web.Models.CustomerEntity.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.NET_Web.Controllers;
