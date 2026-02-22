@@ -1,21 +1,17 @@
-using System.Net;
 using ASP.NET_Web.Models;
 using ASP.NET_Web.Models.CustomerEntity;
 using ASP.NET_Web.Models.CustomerEntity.dto;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.NET_Web.Controllers.API;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CustomersController : ControllerBase
+public class CustomersController(IMapper mapper) : ControllerBase
 {
-    private readonly AspNetWebContext _context;
-
-    public CustomersController()
-    {
-        _context = new AspNetWebContext();
-    }
+    private readonly AspNetWebContext _context = new();
+    private readonly IMapper _mapper = mapper;
 
     protected void Dispose()
     {
@@ -23,13 +19,13 @@ public class CustomersController : ControllerBase
     }
 
     [HttpGet] // GET /api/customers
-    public IEnumerable<Customer> GetCustomers()
+    public IEnumerable<EditCustomerDTO> GetCustomers()
     {
-        return [.. _context.Customer];
+        return  _context.Customer.ToList().Select(_mapper.Map<EditCustomerDTO>);
     }
 
     [HttpGet("{id}")] // GET /api/customer/1
-    public ActionResult<Customer> GetCustomer(int id)
+    public ActionResult<EditCustomerDTO> GetCustomer(int id)
     {
         var customer = _context.Customer.SingleOrDefault(c => c.Id == id);
 
@@ -38,26 +34,32 @@ public class CustomersController : ControllerBase
             return NotFound();
         }
 
-        return Ok(customer);
+        return Ok(_mapper.Map<EditCustomerDTO>(customer));
     }
 
     [HttpPost]
-    public ActionResult<Customer> CreateCustomer(CreateCustomerDTO customer)
+    public ActionResult<EditCustomerDTO> CreateCustomer(CreateCustomerDTO createCustomerDTO)
     {
         if(!ModelState.IsValid)
         {
-            return BadRequest("Invalid customer information.");
+            return BadRequest();
         }
 
-        _context.Customer.Add(CreateCustomerDTO.ToEntity(customer));
+        var customer = _mapper.Map<Customer>(createCustomerDTO);
+        _context.Customer.Add(customer);
         _context.SaveChanges();
 
-        return Created(string.Empty, customer);
+        return Created(string.Empty, _mapper.Map<EditCustomerDTO>(customer));
     }
 
     [HttpPut("{id}")] // PUT /api/customers/1 + json body
-    public ActionResult UpdateCustomer(int id, EditCustomerDTO customer)
+    public ActionResult UpdateCustomer(int id, CustomerDTO customerDTO)
     {
+        if(!ModelState.IsValid)
+        {
+            return BadRequest();
+        }
+        
         var customerInDB = _context.Customer.SingleOrDefault(c => c.Id == id);
 
         if(customerInDB == null)
@@ -65,11 +67,7 @@ public class CustomersController : ControllerBase
             return NotFound();
         }
 
-        customerInDB.Name = customer.Name;
-        customerInDB.Email = customer.Email;
-        customerInDB.Birthday = customer.Birthday;
-        customerInDB.MembershipTypeId = customer.MembershipTypeId;
-
+        _mapper.Map(customerDTO, customerInDB);
         _context.SaveChanges();
 
         return Ok();

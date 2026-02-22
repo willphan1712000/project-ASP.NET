@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using APS.NET_Web.Models.CustomerEntity.dto;
+using ASP.NET_Web.Models.CustomerEntity.dto;
 using ASP.NET_Web.Models.MembershipTypeEntity;
 
 namespace ASP.NET_Web.Models.CustomerEntity.Validation;

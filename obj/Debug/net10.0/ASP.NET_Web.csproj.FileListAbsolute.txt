@@ -374,3 +374,4 @@
 /Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/obj/Debug/net10.0/ref/ASP.NET_Web.dll
 /Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/obj/Debug/net10.0/compressed/qs60njpqjz-{0}-lcppi9qhs5-lcppi9qhs5.gz
 /Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/obj/Debug/net10.0/compressed/pxaqcjhftu-{0}-47hxeiifp3-47hxeiifp3.gz
+/Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/bin/Debug/net10.0/AutoMapper.dll

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using ASP.NET_Web.Models.CustomerEntity.Validation;
 
-namespace APS.NET_Web.Models.CustomerEntity.dto;
+namespace ASP.NET_Web.Models.CustomerEntity.dto;
 
 public class CustomerDTO
 {

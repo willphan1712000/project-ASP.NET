@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "wkRGSjgzHN8=",
+  "dgSpecHash": "CmcbuRlfZHg=",
   "success": true,
   "projectFilePath": "/Users/willphan1712000/Will/Development/SWE/WebDev/project-ASP.NET/ASP.NET_Web.csproj",
   "expectedPackageFiles": [
+    "/Users/willphan1712000/.nuget/packages/automapper/14.0.0/automapper.14.0.0.nupkg.sha512",
     "/Users/willphan1712000/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/willphan1712000/.nuget/packages/microsoft.bcl.asyncinterfaces/7.0.0/microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
     "/Users/willphan1712000/.nuget/packages/microsoft.build.framework/17.8.3/microsoft.build.framework.17.8.3.nupkg.sha512",
