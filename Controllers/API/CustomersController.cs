@@ -2,6 +2,7 @@ using ASP.NET_Web.Models;
 using ASP.NET_Web.Models.CustomerEntity;
 using ASP.NET_Web.Models.CustomerEntity.dto;
 using AutoMapper;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.NET_Web.Controllers.API;
@@ -49,7 +50,7 @@ public class CustomersController(IMapper mapper) : ControllerBase
         _context.Customer.Add(customer);
         _context.SaveChanges();
 
-        return Created(string.Empty, _mapper.Map<EditCustomerDTO>(customer));
+        return Created($"{new Uri(Request.GetDisplayUrl())}/{customer.Id}", _mapper.Map<EditCustomerDTO>(customer));
     }
 
     [HttpPut("{id}")] // PUT /api/customers/1 + json body

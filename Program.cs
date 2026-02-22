@@ -5,12 +5,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(Program));
 
-// builder.Services.AddHttpsRedirection(option =>
-// {
-//     option.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
-//     option.HttpsPort = 5110; // change this port in production
-// });
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
