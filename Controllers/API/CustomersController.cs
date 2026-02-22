@@ -14,11 +14,6 @@ public class CustomersController(IMapper mapper) : ControllerBase
     private readonly AspNetWebContext _context = new();
     private readonly IMapper _mapper = mapper;
 
-    protected void Dispose()
-    {
-        _context.Dispose();
-    }
-
     [HttpGet] // GET /api/customers
     public IEnumerable<EditCustomerDTO> GetCustomers()
     {
