@@ -11,7 +11,7 @@ namespace ASP.NET_Web.Controllers.API;
 [Route("api/[controller]")]
 public class ProductsController(IMapper mapper): ControllerBase
 {
-    private AspNetWebContext _context = new();
+    private readonly AspNetWebContext _context = new();
     private readonly IMapper _mapper = mapper;
 
     [HttpGet]

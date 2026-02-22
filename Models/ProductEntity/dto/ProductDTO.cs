@@ -9,14 +9,4 @@ public class ProductDTO
 
     [Stock]
     public int Stock {get; set;}
-
-    public static Product ToEntity(ProductDTO productDTO)
-    {
-        return new Product
-        {
-            Name = productDTO.Name,
-            Price = productDTO.Price,
-            Stock = productDTO.Stock
-        };
-    }
 }

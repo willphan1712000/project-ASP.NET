@@ -3,16 +3,15 @@ using Microsoft.AspNetCore.Mvc;
 using ASP.NET_Web.Models;
 using ASP.NET_Web.Models.ProductEntity;
 using ASP.NET_Web.Models.ProductEntity.dto;
+using AutoMapper;
 
 namespace ASP.NET_Web.Controllers;
 
-public class ProductController : Controller
+public class ProductController(IMapper mapper) : Controller
 {
-    private AspNetWebContext _context;
-    public ProductController()
-    {
-        _context = new AspNetWebContext();
-    }
+    private readonly AspNetWebContext _context = new();
+    private readonly IMapper _mapper = mapper;
+
     protected override void Dispose(bool disposing)
     {
         _context.Dispose();
@@ -37,7 +36,7 @@ public class ProductController : Controller
             return View("New", productDTO);
         }
         
-        _context.Add(ProductDTO.ToEntity(productDTO));
+        _context.Add(_mapper.Map<Product>(productDTO));
         _context.SaveChanges();
         return RedirectToAction("Index", "Product");
     }
@@ -50,7 +49,7 @@ public class ProductController : Controller
             return NotFound();
         }
 
-        return View(EditProductDTO.ToDTO(product));
+        return View(_mapper.Map<EditProductDTO>(product));
     }
 
     [HttpPost]
