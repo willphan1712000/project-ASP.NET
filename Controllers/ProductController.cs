@@ -17,11 +17,13 @@ public class ProductController(IMapper mapper) : Controller
         _context.Dispose();
         base.Dispose(disposing);
     }
+
     public IActionResult Index()
     {
         var products = _context.Product.ToList();
         return View(products);
     }
+
     public IActionResult New()
     {
         return View(null);

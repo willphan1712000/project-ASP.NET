@@ -4,8 +4,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseSwagger(); // Generates the swagger.json file
+app.UseSwaggerUI(); // Generates the beautiful HTML UI
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -13,6 +17,7 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+    
 }
 
 // Force HTTP requests to upgrade to HTTPS

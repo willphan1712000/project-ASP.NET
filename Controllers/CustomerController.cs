@@ -17,17 +17,21 @@ public class CustomerController(IMapper mapper) : Controller
         _context.Dispose();
         base.Dispose(disposing);
     }
+
     public IActionResult Index()
     {
         var customers = _context.Customer.ToList();
         return View(customers);
     }
+
+    [NonAction]
     [Route("Customer/Details/{Id}")]
     public IActionResult Details(int Id)
     {
         var orders = _context.Order.Where(o => o.Customer_id == Id).ToList();
         return View(orders);
     }
+
     public IActionResult New() {
         var MembershipTypes = _context.MembershipType.ToList();
         var CustomerModelView = new NewCustomerViewModel {MembershipTypes = MembershipTypes};
