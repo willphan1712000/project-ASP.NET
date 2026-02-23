@@ -1,7 +1,6 @@
 using ASP.NET_Web.Models;
 using ASP.NET_Web.Repo;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 using DotNetEnv;
 Env.Load();
 
@@ -11,7 +10,7 @@ var connectionString = builder.Configuration["DATABASE_SOURCE"] ?? throw new Inv
 
 builder.Services.AddDbContext<AspNetWebContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AspNetWebContext>();
+builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AspNetWebContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
