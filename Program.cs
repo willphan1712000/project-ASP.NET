@@ -1,9 +1,14 @@
+using ASP.NET_Web.Models;
+using ASP.NET_Web.Repo;
+using Microsoft.EntityFrameworkCore;
+
 // Create the builder
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();

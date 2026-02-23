@@ -5,12 +5,11 @@ namespace ASP.NET_Web.Repo;
 
 public class UnitOfWork : IUnitOfWork
 {
-    private readonly AspNetWebContext _context;
+    private readonly AspNetWebContext _context = new();
     public ICustomerRepo Customer {get; private set;}
 
-    public UnitOfWork(AspNetWebContext context)
+    public UnitOfWork()
     {
-        _context = context;
         Customer = new CustomerRepo(_context);
     }
 
