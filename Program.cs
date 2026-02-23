@@ -2,10 +2,12 @@ using ASP.NET_Web.Models;
 using ASP.NET_Web.Repo;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using DotNetEnv;
+Env.Load();
 
 // Create the builder
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("AspNetWebContextConnection") ?? throw new InvalidOperationException("Connection string 'AspNetWebContextConnection' not found.");
+var connectionString = builder.Configuration["DATABASE_SOURCE"] ?? throw new InvalidOperationException("Connection string 'AspNetWebContextConnection' not found.");
 
 builder.Services.AddDbContext<AspNetWebContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
