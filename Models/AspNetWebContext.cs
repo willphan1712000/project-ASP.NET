@@ -3,11 +3,12 @@ using ASP.NET_Web.Models.MembershipTypeEntity;
 using ASP.NET_Web.Models.OrderEntity;
 using ASP.NET_Web.Models.ProductEntity;
 using ASP.NET_Web.Models.ProfileEntity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ASP.NET_Web.Models;
 
-public partial class AspNetWebContext : DbContext
+public partial class AspNetWebContext : IdentityDbContext<User>
 {
     public AspNetWebContext()
     {
