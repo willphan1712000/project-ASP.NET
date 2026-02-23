@@ -2,6 +2,8 @@ using ASP.NET_Web.Models;
 using ASP.NET_Web.Repo;
 using Microsoft.EntityFrameworkCore;
 using DotNetEnv;
+using Microsoft.AspNetCore.Identity;
+using ASP.NET_Web.Seeder;
 Env.Load();
 
 // Create the builder
@@ -10,7 +12,10 @@ var connectionString = builder.Configuration["DATABASE_SOURCE"] ?? throw new Inv
 
 builder.Services.AddDbContext<AspNetWebContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AspNetWebContext>();
+builder.Services
+    .AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<AspNetWebContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -19,6 +24,22 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+// --- ADD THIS BLOCK TO RUN THE SEEDER ---
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        await RoleSeeder.SeedRolesAndAdminAsync(services);
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while seeding the database.");
+    }
+}
+// ----------------------------------------
 
 app.UseSwagger(); // Generates the swagger.json file
 app.UseSwaggerUI(); // Generates the beautiful HTML UI
@@ -37,9 +58,10 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
-// Enable Authorization
-app.UseAuthorization();
-app.UseAuthentication();
+
+app.UseAuthentication(); // Enable Authentacation
+app.UseAuthorization(); // Enable Authorization
+
 app.MapRazorPages();
 
 app.MapStaticAssets();

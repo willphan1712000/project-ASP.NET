@@ -3,6 +3,7 @@ using ASP.NET_Web.Models.CustomerEntity;
 using ASP.NET_Web.Models.CustomerEntity.dto;
 using ASP.NET_Web.Models.CustomerEntity.ViewModels;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.NET_Web.Controllers;
@@ -18,6 +19,7 @@ public class CustomerController(IMapper mapper) : Controller
         base.Dispose(disposing);
     }
 
+    [Authorize]
     public IActionResult Index()
     {
         var customers = _context.Customer.ToList();
