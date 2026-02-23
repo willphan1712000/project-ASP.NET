@@ -4,6 +4,7 @@ using ASP.NET_Web.Models;
 using ASP.NET_Web.Models.ProductEntity;
 using ASP.NET_Web.Models.ProductEntity.dto;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ASP.NET_Web.Controllers;
 
@@ -24,6 +25,7 @@ public class ProductController(IMapper mapper) : Controller
         return View(products);
     }
 
+    [Authorize(Roles = UserRole.ADMIN)]
     public IActionResult New()
     {
         return View(null);
@@ -43,6 +45,7 @@ public class ProductController(IMapper mapper) : Controller
         return RedirectToAction("Index", "Product");
     }
 
+    [Authorize(Roles = UserRole.ADMIN)]
     public IActionResult Edit(int id)
     {
         var product = _context.Product.SingleOrDefault(p => p.Id == id);

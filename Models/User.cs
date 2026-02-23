@@ -6,3 +6,9 @@ public class User : IdentityUser
 {
     public string? Initials {get; set;}
 }
+
+public class UserRole
+{
+    public const string ADMIN = "Admin";
+    public const string CUSTOMER = "Customer";
+}
