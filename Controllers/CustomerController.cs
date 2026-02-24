@@ -5,6 +5,7 @@ using ASP.NET_Web.Models.CustomerEntity.ViewModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 
 namespace ASP.NET_Web.Controllers;
 
@@ -20,6 +21,7 @@ public class CustomerController(IMapper mapper) : Controller
     }
 
     [Authorize]
+    [OutputCache(Duration = 50)]
     public IActionResult Index()
     {
         var customers = _context.Customer.ToList();
