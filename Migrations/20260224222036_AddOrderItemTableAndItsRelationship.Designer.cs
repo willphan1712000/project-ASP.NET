@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ASP.NET_Web.Migrations
 {
     [DbContext(typeof(AspNetWebContext))]
-    [Migration("20260224043952_FixOrderItemProductIdConstraint")]
-    partial class FixOrderItemProductIdConstraint
+    [Migration("20260224222036_AddOrderItemTableAndItsRelationship")]
+    partial class AddOrderItemTableAndItsRelationship
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

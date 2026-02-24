@@ -5,8 +5,8 @@ namespace ASP.NET_Web.Models.OrderEntity;
 
 public enum OrderStatus
 {
-    PENDING = 1,
-    FAILED = 2
+    CHECKOUT = 1,
+    RETURN = 2
 }
 
 public class Order

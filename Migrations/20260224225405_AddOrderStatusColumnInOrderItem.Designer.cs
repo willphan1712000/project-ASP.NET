@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ASP.NET_Web.Migrations
 {
     [DbContext(typeof(AspNetWebContext))]
-    [Migration("20260224033801_AddOrderItemTableAndItsRelationship")]
-    partial class AddOrderItemTableAndItsRelationship
+    [Migration("20260224225405_AddOrderStatusColumnInOrderItem")]
+    partial class AddOrderStatusColumnInOrderItem
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -124,12 +124,15 @@ namespace ASP.NET_Web.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.HasKey("Id");
 
                     b.HasIndex("OrderId");
 
-                    b.HasIndex("ProductId")
-                        .IsUnique();
+                    b.HasIndex("ProductId");
 
                     b.ToTable("orderItems", (string)null);
                 });
@@ -439,8 +442,8 @@ namespace ASP.NET_Web.Migrations
                         .IsRequired();
 
                     b.HasOne("ASP.NET_Web.Models.ProductEntity.Product", "Product")
-                        .WithOne("Item")
-                        .HasForeignKey("ASP.NET_Web.Models.OrderItemEntity.OrderItem", "ProductId")
+                        .WithMany("Items")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -543,7 +546,7 @@ namespace ASP.NET_Web.Migrations
 
             modelBuilder.Entity("ASP.NET_Web.Models.ProductEntity.Product", b =>
                 {
-                    b.Navigation("Item");
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

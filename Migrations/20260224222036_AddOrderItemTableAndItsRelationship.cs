@@ -12,18 +12,6 @@ namespace ASP.NET_Web.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "CreatedAt",
-                table: "orders",
-                newName: "RentDate");
-
-            migrationBuilder.AddColumn<DateTime>(
-                name: "ReturnDate",
-                table: "orders",
-                type: "datetime(6)",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
-
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "AspNetUserTokens",
@@ -112,8 +100,7 @@ namespace ASP.NET_Web.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_orderItems_ProductId",
                 table: "orderItems",
-                column: "ProductId",
-                unique: true);
+                column: "ProductId");
         }
 
         /// <inheritdoc />
@@ -122,14 +109,6 @@ namespace ASP.NET_Web.Migrations
             migrationBuilder.DropTable(
                 name: "orderItems");
 
-            migrationBuilder.DropColumn(
-                name: "ReturnDate",
-                table: "orders");
-
-            migrationBuilder.RenameColumn(
-                name: "RentDate",
-                table: "orders",
-                newName: "CreatedAt");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",

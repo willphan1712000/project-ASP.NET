@@ -1,5 +1,3 @@
-using ASP.NET_Web.Models.ProductEntity.dto;
-
 namespace APS.NET_Web.Models.OrderEntity.dto;
 
 public class CheckoutDTO

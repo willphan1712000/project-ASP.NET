@@ -6,6 +6,7 @@ namespace ASP.NET_Web.Models.OrderItemEntity;
 public class OrderItem
 {
     public int Id {get; set;}
+    public OrderStatus Status {get; set;}
 
     public int OrderId {get; set;}
     public Order? Order {get; set;}

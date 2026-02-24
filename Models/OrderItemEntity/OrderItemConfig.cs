@@ -1,3 +1,4 @@
+using ASP.NET_Web.Models.OrderEntity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -16,6 +17,13 @@ public class OrderItemConfig : IEntityTypeConfiguration<OrderItem>
         builder
             .Property(o => o.Id)
             .ValueGeneratedOnAdd();
+
+        builder
+            .Property(o => o.Status)
+            .HasConversion(
+                v => v.ToString(),
+                v => Enum.Parse<OrderStatus>(v)
+            );
 
         builder
             .HasOne(o => o.Product)
