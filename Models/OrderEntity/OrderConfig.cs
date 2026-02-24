@@ -30,7 +30,7 @@ public class OrderConfig : IEntityTypeConfiguration<Order>
             );
             
         builder
-            .Property(o => o.CreatedAt)
+            .Property(o => o.RentDate)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP()");
     }
 }

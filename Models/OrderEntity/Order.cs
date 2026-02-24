@@ -1,4 +1,5 @@
 using ASP.NET_Web.Models.CustomerEntity;
+using ASP.NET_Web.Models.OrderItemEntity;
 
 namespace ASP.NET_Web.Models.OrderEntity;
 
@@ -17,7 +18,11 @@ public class Order
 
     public float Price {get; set;}
 
-    public DateTime CreatedAt {set; get;} = DateTime.Now;
+    public DateTime RentDate {set; get;} = DateTime.Now;
+
+    public DateTime ReturnDate {set; get;}
 
     public OrderStatus Status {set; get;}
+
+    required public List<OrderItem> OrderItems {get;set;}
 }
