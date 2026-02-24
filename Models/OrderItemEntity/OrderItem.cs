@@ -8,8 +8,8 @@ public class OrderItem
     public int Id {get; set;}
 
     public int OrderId {get; set;}
-    required public Order Order {get; set;}
+    public Order? Order {get; set;}
 
     public int ProductId {get; set;}
-    required public Product Product {get; set;}
+    public Product? Product {get; set;}
 }

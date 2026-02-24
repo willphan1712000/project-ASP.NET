@@ -11,5 +11,5 @@ public class Product
     required public int Stock {get; set;}
     public List<Customer> Customers {get; set;} = [];
     public DateTime createdAt;
-    public OrderItem? Item {get; set;}
+    public List<OrderItem>? Items {get; set;}
 }

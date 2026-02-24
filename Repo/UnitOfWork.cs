@@ -1,5 +1,6 @@
 using ASP.NET_Web.Models;
 using ASP.NET_Web.Models.CustomerEntity.Repo;
+using ASP.NET_Web.Models.OrderEntity.Repo;
 using ASP.NET_Web.Models.ProductEntity;
 using ASP.NET_Web.Models.ProductEntity.Repo;
 
@@ -11,11 +12,13 @@ public class UnitOfWork : IUnitOfWork
     public ICustomerRepo Customer {get; private set;}
 
     public IProductRepo Product {get; private set;}
+    public IOrderRepo Order {get; private set;}
 
     public UnitOfWork()
     {
         Customer = new CustomerRepo(_context);
         Product = new ProductRepo(_context);
+        Order = new OrderRepo(_context);
     }
 
     public void Dispose()
