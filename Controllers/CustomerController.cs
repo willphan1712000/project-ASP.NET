@@ -34,6 +34,7 @@ public class CustomerController(IMapper mapper) : Controller
         return View(orders);
     }
 
+    [Authorize(Roles = UserRole.ADMIN)]
     public IActionResult New() {
         var MembershipTypes = _context.MembershipType.ToList();
         var CustomerModelView = new NewCustomerViewModel {MembershipTypes = MembershipTypes};
@@ -61,6 +62,7 @@ public class CustomerController(IMapper mapper) : Controller
         return RedirectToAction("Index", "Customer");
     }
 
+    [Authorize(Roles = UserRole.ADMIN)]
     public IActionResult Edit(int id)
     {
         var customer = _context.Customer.SingleOrDefault(c => c.Id == id);

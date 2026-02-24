@@ -6,7 +6,9 @@
     </h1>
 
     <div class="vstack gap-2 w-25">
-        <a href="/Customer/New" class="btn btn-primary">Create customer</a>
+        @if(User.IsInRole(UserRole.ADMIN)) {
+            <a href="/Customer/New" class="btn btn-primary">Create customer</a>
+        }
         @foreach(var customer in Model) {
             @Html.ActionLink(customer.Name, "Edit", "Customer", new { Id = customer.Id })
         }

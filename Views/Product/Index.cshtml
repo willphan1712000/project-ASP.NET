@@ -5,7 +5,9 @@
 </h1>
 
 <div class="vstack gap-3 w-25">
-    <a href="/Product/New" class="btn btn-primary">Create Movie</a>
+    @if(User.IsInRole(UserRole.ADMIN)) {
+        <a href="/Product/New" class="btn btn-primary">Create Movie</a>
+    }
     @foreach(var movie in Model) {
         @Html.ActionLink(movie.Name, "Edit", "Product", new {Id = movie.Id})
     }
