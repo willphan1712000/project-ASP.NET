@@ -53,11 +53,13 @@ if (!app.Environment.IsDevelopment())
     
 }
 
+app.UseExceptionHandler("/Error");
+app.UseStatusCodePagesWithRedirects("/Error/{0}");
+
 // Force HTTP requests to upgrade to HTTPS
 app.UseHttpsRedirection();
 
 app.UseRouting();
-
 
 app.UseAuthentication(); // Enable Authentacation
 app.UseAuthorization(); // Enable Authorization
