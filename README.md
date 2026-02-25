@@ -1,48 +1,25 @@
 # Project_ASP.NET_Web
-- Build a MVC web app using ASP.NET
+- This helps me understand how every component is working together under the hood using ASP.NET Core Framework.
 
-### Create a MVC weeb app
-```bash
-dotnet new mvc -n [project_name]
-```
+## What I've built 
+- Build a web app using ASP.NET MVC
+- Build APIs using ASP.NET Web API
+- Build Database using Entity Framework Core
 
-### Run the app in watch mode
-```bash
-dotnet watch run
-```
+> [!NOTE]
+> I've built a little frontend but not focused because I am concentrating on the server logic and server side rendering for HTML markup done by the server that will be sent to the client.
 
-### Create database context - If models not exist, it creates models from existing database
+## Try the project
+- First, you need to have a local database ready for running this application with connection string and save it in .env file
 
-```bash
-dotnet ef dbcontext scaffold "Server=localhost;Database=ASP_NET_Web;User=root;Password=;" Pomelo.EntityFrameworkCore.MySql -o Models
-```
+- Second, your machine needs to have dotnet runtime installed
 
-### Run migration to generate migration file
-
-```bash
-dotnet ef migrations add [name_of_migration]
-```
-
-### Remove the last migration that was created
-
-```bash
-dotnet ef migrations remove
-```
-
-### Apply migration to sync models with database
-
+- Third, run all migrations
 ```bash
 dotnet ef database update
 ```
 
-### Revert migration
-
+- Fourth, Run this command to start the application
 ```bash
-dotnet ef database update [name_of_migration]
-```
-
-### Export SQL Script from Migrations
-
-```bash
-dotnet ef migrations script -o deploy.sql
+dotnet run
 ```
